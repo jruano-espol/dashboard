@@ -1,4 +1,5 @@
 import { Grid } from '@mui/material';
+import { useState } from 'react';
 import './App.css'
 import HeaderUI from './components/HeaderUI';
 import AlertUI from './components/AlertUI';
@@ -9,8 +10,8 @@ import TableUI from './components/TableUI';
 import ChartUI from './components/ChartUI';
 
 function App() {
-  const dataFetcherOutput = DataFetcher();
-
+  let [city, setCity] = useState<string>('guayaquil');
+  let dataFetcherOutput = DataFetcher(city);
   return (
     <Grid container spacing={5} justifyContent="center" alignItems="center">
       {/* Encabezado */}
@@ -29,7 +30,7 @@ function App() {
       
       {/* Selector */}
       <Grid size={{ xs: 12, md: 3 }}>
-        <SelectorUI />
+        <SelectorUI cityInput={city} setCityInput={setCity}/>
       </Grid>
       
       {/* Indicadores */}
