@@ -12,42 +12,50 @@ function combineArrays(arrLabels: Array<string>, arrValues1: Array<number>, arrV
 }
 
 const columns: GridColDef[] = [
-   { field: 'id', headerName: 'ID', width: 90 },
+   { field: 'id', headerName: '#', width: 70 },
    {
       field: 'label',
-      headerName: 'Tiempo',
+      headerName: 'Hora',
       width: 150,
+      headerClassName: 'table-header',
+      cellClassName: 'table-cell',
    },
    {
       field: 'value1',
-      headerName: 'Temperatura (2m)',
-      width: 150,
+      headerName: 'Temp. (°C)',
+      width: 130,
+      headerClassName: 'table-header',
+      cellClassName: 'table-cell',
    },
    {
       field: 'value2',
-      headerName: 'Velocidad del viento (10m)',
-      width: 150,
+      headerName: 'Viento (km/h)',
+      width: 140,
+      headerClassName: 'table-header',
+      cellClassName: 'table-cell',
    },
    {
       field: 'resumen',
       headerName: 'Resumen',
-      description: 'No es posible ordenar u ocultar esta columna.',
+      description: 'Resumen de datos combinados.',
       sortable: false,
       hideable: false,
-      width: 160,
-      valueGetter: (_, row) => `${row.label || ''} ${row.value1 || ''} ${row.value2 || ''}`,
+      width: 220,
+      valueGetter: (_, row) => `${row.label} - ${row.value1}°C, ${row.value2}km/h`,
+      headerClassName: 'table-header',
+      cellClassName: 'table-cell',
    },
 ];
 
-export default function TableUI({loading, error, data}: DataFetcherOutput) {
+export default function TableUI({ loading, error, data }: DataFetcherOutput) {
    if (loading) {
-      return <p>Cargando datos...</p>;
+      return <p className="status-text">Cargando datos...</p>;
    }
    if (error) {
-      return <p>Error: {error}</p>;
+      return <p className="status-text error-text">Error: {error}</p>;
    }
    if (!data || !data.hourly) {
-      return <p>Sin datos disponibles.</p>;
+      return <p className="status-text">Sin datos disponibles.</p>;
    }
 
    const limit = 12;
@@ -58,7 +66,14 @@ export default function TableUI({loading, error, data}: DataFetcherOutput) {
    const rows = combineArrays(arrLabels, arrValues1, arrValues2);
 
    return (
-      <Box sx={{ height: 350, width: '100%' }}>
+      <Box sx={{
+         height: 400,
+         width: '100%',
+         backgroundColor: '#f9fafb',
+         borderRadius: '12px',
+         padding: '12px',
+         boxShadow: '0 2px 12px rgba(0, 0, 0, 0.1)',
+      }}>
          <DataGrid
             rows={rows}
             columns={columns}
@@ -71,6 +86,7 @@ export default function TableUI({loading, error, data}: DataFetcherOutput) {
             }}
             pageSizeOptions={[5]}
             disableRowSelectionOnClick
+            className="custom-data-grid"
          />
       </Box>
    );
