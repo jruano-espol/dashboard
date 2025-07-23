@@ -1,9 +1,9 @@
 :root {
   --font-family-base: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
-  --color-text-light: #213547;
-  --color-text-dark: rgba(255, 255, 255, 0.92);
-  --color-bg-light: #f5f7fa;
-  --color-bg-dark: #1e1e2f;
+  --color-text-light: #213547;            /* Texto para fondos claros */
+  --color-text-dark: #2a2a3d;             /* Texto para fondos claros oscuros */
+  --color-bg-light: #f5f7fa;              /* Fondo claro */
+  --color-bg-dark: #e3e8ef;               /* Fondo "oscuro" claro */
   --color-accent: #646cff;
   --color-accent-hover: #535bf2;
   --color-border: rgba(100, 108, 255, 0.5);
@@ -98,4 +98,21 @@ button:focus-visible {
   a:hover {
     color: #747bff;
   }
+}
+
+.header-container {
+  background: linear-gradient(to right, #1976d2, #42a5f5);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin-bottom: 2rem;
+  color: white;
+}
+
+.header-title {
+  font-weight: 700;
+  font-size: 2.5rem;
+  letter-spacing: 1px;
+  margin: 0;
 }
