@@ -93,7 +93,25 @@ function App() {
       </Grid>
       
       {/* Información adicional */}
-      <Grid size={{ xs: 12, md: 12 }}>Elemento: Información adicional</Grid>
+      <Grid size={{ xs: 6, md: 6 }}>
+        <div style={{
+          background: 'linear-gradient(90deg, #e3f2fd 0%, #bbdefb 100%)',
+          borderRadius: '12px',
+          padding: '24px',
+          boxShadow: '0 2px 8px rgba(33, 150, 243, 0.08)',
+          marginTop: '16px',
+          textAlign: 'center',
+        }}>
+          <h2 style={{ margin: '0 0 8px 0', color: '#1976d2' }}>
+            Información adicional del clima
+          </h2>
+          <p style={{ margin: 0, color: '#333', fontSize: '1.1rem' }}>
+            Consulta el pronóstico actualizado para tu ciudad.<br />
+            Los datos incluyen temperatura, humedad, viento y más.<br />
+            Recuerda que las condiciones pueden cambiar rápidamente.
+          </p>
+        </div>
+      </Grid>
     </Grid>
   );
 }
